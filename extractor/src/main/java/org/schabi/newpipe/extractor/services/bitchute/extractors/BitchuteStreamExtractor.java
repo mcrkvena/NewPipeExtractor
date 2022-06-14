@@ -315,8 +315,7 @@ public class BitchuteStreamExtractor extends StreamExtractor {
                         .setIsVideoOnly(false)
                         .setMediaFormat(format)
                         .setResolution("480p")
-                        .build());
-            )
+                        .build()));
         } catch (final Exception e) {
             throw new ParsingException("Error parsing video stream");
         }
