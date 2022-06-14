@@ -3,7 +3,7 @@ package org.schabi.newpipe.extractor.services.bitchute.misc;
 import com.grack.nanojson.JsonObject;
 
 import org.jsoup.nodes.Element;
-import org.schabi.newpipe.extractor.services.bitchute.extractor.BitchuteStreamExtractor;
+import org.schabi.newpipe.extractor.services.bitchute.extractors.BitchuteStreamExtractor;
 import org.schabi.newpipe.extractor.stream.StreamInfoItemExtractor;
 
 import java.util.HashMap;
