@@ -308,17 +308,17 @@ public class BitchuteStreamExtractor extends StreamExtractor {
             final MediaFormat format = MediaFormat.getFromSuffix(extension);
 
             //return Collections.singletonList(new VideoStream(videoUrl, format, "480p"));
-            return Collections.singletonList (
-                videoStreams.add(new VideoStream.Builder()
+            Collections.singletonList.add(new VideoStream.Builder()
                         .setId(videoUrl)
                         .setContent(videoUrl, true)
                         .setIsVideoOnly(false)
                         .setMediaFormat(format)
                         .setResolution("480p")
-                        .build()));
+                        .build());
         } catch (final Exception e) {
             throw new ParsingException("Error parsing video stream");
         }
+        return Collections.singletonList();
     }
 
     @Override

@@ -286,7 +286,7 @@ public class RumbleStreamExtractor extends StreamExtractor {
                 itagItem.fps = -1;
 
                 //videoStreamsList.add(new VideoStream(videoUrl, false, itagItem));
-                videoStreams.add(new VideoStream.Builder()
+                videoStreamsList.add(new VideoStream.Builder()
                         .setId(videoUrl)
                         .setContent(videoUrl, true)
                         .setIsVideoOnly(false)
