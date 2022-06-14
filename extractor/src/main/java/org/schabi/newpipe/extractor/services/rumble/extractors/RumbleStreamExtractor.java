@@ -285,7 +285,14 @@ public class RumbleStreamExtractor extends StreamExtractor {
                 // can only handle integer set so we set it to -1
                 itagItem.fps = -1;
 
-                videoStreamsList.add(new VideoStream(videoUrl, false, itagItem));
+                //videoStreamsList.add(new VideoStream(videoUrl, false, itagItem));
+                videoStreams.add(new VideoStream.Builder()
+                        .setId(videoUrl)
+                        .setContent(videoUrl, true)
+                        .setIsVideoOnly(false)
+                        .setMediaFormat(format)
+                        .setResolution(res + "p")
+                        .build());
             }
         }
 

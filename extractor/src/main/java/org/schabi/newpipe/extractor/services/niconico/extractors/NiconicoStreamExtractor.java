@@ -131,7 +131,14 @@ public class NiconicoStreamExtractor extends StreamExtractor {
 
             final String contentURL = content.getObject("data").getObject("session")
                     .getString("content_uri");
-            videoStreams.add(new VideoStream(contentURL, MediaFormat.MPEG_4, "360p"));
+            //videoStreams.add(new VideoStream(contentURL, MediaFormat.MPEG_4, "360p"));
+            videoStreams.add(new VideoStream.Builder()
+                        .setId(contentURL)
+                        .setContent(contentURL, true)
+                        .setIsVideoOnly(false)
+                        .setMediaFormat(MediaFormat.MPEG_4)
+                        .setResolution("360p")
+                        .build());
 
         } catch (final JsonParserException e) {
             throw new ExtractionException("could not get video contents.");
