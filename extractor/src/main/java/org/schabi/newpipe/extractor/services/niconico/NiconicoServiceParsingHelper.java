@@ -10,8 +10,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.Locale;
 
-import jdk.vm.ci.meta.Local;
-
 public class NiconicoServiceParsingHelper {
     public static DateWrapper parseSnapshotDateTime(final String textDateTime) {
         final ZonedDateTime zonedDateTime = ZonedDateTime.parse(
