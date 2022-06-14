@@ -73,7 +73,13 @@ public class BillibiliStreamExtractor extends StreamExtractor {
          }
          JsonArray audioArray =responseJson.getObject("data").getObject("dash").getArray("audio") ;
          String url = audioArray.getObject(0).getString("baseUrl");
-         audioStreams.add(new AudioStream(url, MediaFormat.M4A, 192000));
+         //audioStreams.add(new AudioStream(url, MediaFormat.M4A, 192000));
+         audioStreams.add(new AudioStream.Builder()
+                        .setId(response)
+                        .setContent(url, true)
+                        .setMediaFormat(MediaFormat.M4A)
+                        .setAverageBitrate(192000)
+                        .build());
          return audioStreams;
     }
 
@@ -107,7 +113,14 @@ public class BillibiliStreamExtractor extends StreamExtractor {
              }
             url = videoArray.getObject(i).getString("baseUrl");
          }
-         videoStreams.add(new VideoStream(url, MediaFormat.MPEG_4, "720P",true));
+         //videoStreams.add(new VideoStream(url, MediaFormat.MPEG_4, "720P",true));
+         videoStreams.add(new VideoStream.Builder()
+                        .setId(response)
+                        .setContent(url, true)
+                        .setIsVideoOnly(true)
+                        .setMediaFormat(MediaFormat.MPEG_4)
+                        .setResolution("720P")
+                        .build());
         return videoStreams;
     }
 
