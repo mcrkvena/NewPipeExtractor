@@ -45,6 +45,8 @@ The following sites are currently supported:
 - media.ccc.de
 - PeerTube (no P2P)
 - Bandcamp
+- Bilibili
+- Niconico
 
 ## License
 
