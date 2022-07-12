@@ -48,8 +48,6 @@ public final class ServiceList {
     public static final BandcampService Bandcamp;
     public static final BilibiliService Bilibili;
     public static final NiconicoService Niconico;
-    public static final RumbleService Rumble;
-    public static final BitchuteService Bitchute;
 
     /**
      * When creating a new service, put this service in the end of this list,
@@ -63,9 +61,7 @@ public final class ServiceList {
                     PeerTube = new PeertubeService(3),
                     Bandcamp = new BandcampService(4),
                     Bilibili = new BilibiliService(5),
-                    Niconico = new NiconicoService(6),
-                    Rumble = new RumbleService(7),
-                    Bitchute = new BitchuteService(8)
+                    Niconico = new NiconicoService(6)
             ));
 
     /**
