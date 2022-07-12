@@ -7,8 +7,6 @@ import org.schabi.newpipe.extractor.services.soundcloud.SoundcloudService;
 import org.schabi.newpipe.extractor.services.youtube.YoutubeService;
 import org.schabi.newpipe.extractor.services.bilibili.BilibiliService;
 import org.schabi.newpipe.extractor.services.niconico.NiconicoService;
-import org.schabi.newpipe.extractor.services.rumble.RumbleService;
-import org.schabi.newpipe.extractor.services.bitchute.BitchuteService;
 
 import java.util.Arrays;
 import java.util.Collections;
