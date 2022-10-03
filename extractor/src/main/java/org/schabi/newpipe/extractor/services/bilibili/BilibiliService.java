@@ -17,7 +17,8 @@ import org.schabi.newpipe.extractor.services.bilibili.extractors.BilibiliChannel
 import org.schabi.newpipe.extractor.services.bilibili.extractors.BilibiliCommentExtractor;
 import org.schabi.newpipe.extractor.services.bilibili.extractors.BilibiliFeedExtractor;
 import org.schabi.newpipe.extractor.services.bilibili.extractors.BilibiliSearchExtractor;
-import org.schabi.newpipe.extractor.services.bilibili.extractors.BillibiliStreamExtractor;
+import org.schabi.newpipe.extractor.services.bilibili.extractors.BilibiliSuggestionExtractor;
+import org.schabi.newpipe.extractor.services.bilibili.extractors.BilibiliStreamExtractor;
 import org.schabi.newpipe.extractor.services.bilibili.linkHandler.BilibiliChannelLinkHandlerFactory;
 import org.schabi.newpipe.extractor.services.bilibili.linkHandler.BilibiliCommentsLinkHandlerFactory;
 import org.schabi.newpipe.extractor.services.bilibili.linkHandler.BilibiliFeedLinkHandlerFactory;
@@ -34,8 +35,18 @@ import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCap
 import static org.schabi.newpipe.extractor.StreamingService.ServiceInfo.MediaCapability.VIDEO;
 
 import java.util.Arrays;
+import java.util.Collections;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 public class BilibiliService extends StreamingService{
+
+    static public Map<String, List<String>> getHeaders(){
+        final Map<String, List<String>> headers = new HashMap<>();
+        headers.put("Cookie", Collections.singletonList("buvid3=C17989F9-9E34-6949-F6B9-19E02F3DC4B734983infoc;"));
+        return headers;
+    }
 
     public BilibiliService(int id){
         super(id, "Bilibili", Arrays.asList(VIDEO, COMMENTS));
@@ -68,14 +79,12 @@ public class BilibiliService extends StreamingService{
 
     @Override
     public SearchExtractor getSearchExtractor(SearchQueryHandler queryHandler) {
-        // TODO Auto-generated method stub
         return new BilibiliSearchExtractor(this, queryHandler);
     }
 
     @Override
     public SuggestionExtractor getSuggestionExtractor() {
-        // TODO Auto-generated method stub
-        return null;
+        return new BilibiliSuggestionExtractor(this);
     }
 
     @Override
@@ -94,7 +103,6 @@ public class BilibiliService extends StreamingService{
             kioskList.addKioskEntry(kioskFactory, h, "Trending");
             kioskList.setDefaultKiosk("Trending");
         } catch (Exception e) {
-            // TODO Auto-generated catch block
             e.printStackTrace();
         }
         return kioskList;
@@ -102,7 +110,6 @@ public class BilibiliService extends StreamingService{
 
     @Override
     public ChannelExtractor getChannelExtractor(ListLinkHandler linkHandler) throws ExtractionException {
-        // TODO Auto-generated method stub
         return new BilibiliChannelExtractor(this, linkHandler);
     }
 
@@ -114,19 +121,16 @@ public class BilibiliService extends StreamingService{
 
     @Override
     public StreamExtractor getStreamExtractor(LinkHandler linkHandler) throws ExtractionException {
-        // TODO Auto-generated method stub
-        return new BillibiliStreamExtractor(this, linkHandler);
+        return new BilibiliStreamExtractor(this, linkHandler);
     }
 
     @Override
     public CommentsExtractor getCommentsExtractor(ListLinkHandler linkHandler) throws ExtractionException {
-        // TODO Auto-generated method stub
         return new BilibiliCommentExtractor(this, linkHandler);
     }
 
     @Override
     public ListLinkHandlerFactory getCommentsLHFactory() {
-        // TODO Auto-generated method stub
         return new BilibiliCommentsLinkHandlerFactory();
     }
 

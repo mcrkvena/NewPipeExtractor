@@ -1,5 +1,7 @@
 package org.schabi.newpipe.extractor.services.bilibili.extractors;
 
+import static org.schabi.newpipe.extractor.services.bilibili.BilibiliService.getHeaders;
+
 import com.grack.nanojson.JsonArray;
 import com.grack.nanojson.JsonObject;
 import com.grack.nanojson.JsonParser;
@@ -57,13 +59,13 @@ public class BilibiliCommentExtractor extends CommentsExtractor {
 
     @Override
     public InfoItemsPage<CommentsInfoItem> getPage(Page page) throws IOException, ExtractionException {
-        final String html = getDownloader().get(page.getUrl()).responseBody();
+        final String html = getDownloader().get(page.getUrl(), getHeaders()).responseBody();
         try {
             json = JsonParser.object().from(html);
         } catch (JsonParserException e) {
             e.printStackTrace();
         }
-        JsonArray results = json.getArray("replies");
+        JsonArray results = json.getObject("data").getArray("replies");
         if(results.size() == 0){
             return new InfoItemsPage<>(new CommentsInfoItemsCollector(getServiceId()), null);
         }
@@ -72,7 +74,7 @@ public class BilibiliCommentExtractor extends CommentsExtractor {
         for (int i = 0; i< results.size(); i++){
             collector.commit(new BilibiliCommentsInfoItemExtractor(results.getObject(i), getUrl()));
         }
-        String currentPageString = page.getUrl().split("pn=")[page.getUrl().split("pn=").length-1];
+        String currentPageString = page.getUrl().split("pn=")[page.getUrl().split("pn=").length-1].split("&")[0];
         int currentPage = Integer.parseInt(currentPageString);
         String nextPage = getUrl().replace(String.format("pn=%s", 1), String.format("pn=%s", String.valueOf(currentPage + 1)));
         return new InfoItemsPage<>(collector, new Page(nextPage));

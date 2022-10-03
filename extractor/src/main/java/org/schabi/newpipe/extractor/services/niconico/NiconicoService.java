@@ -49,7 +49,7 @@ public class NiconicoService extends StreamingService {
             = "(nicovideo\\.jp\\/watch|nico\\.ms)\\/((?:sm|so)\\d+)(.+)?";
     public static final String USER_UPLOAD_LIST
             = "(?:www|sp).nicovideo.jp/user/(\\d+)(?:/video)?";
-    public static final String APP_NAME = "NewPipe";
+    public static final String APP_NAME = "YouPipe";
     // generally, Niconico uses Japanese, but some videos have multiple language texts.
     // Use ja-JP locale to get original information of video.
     public static final Localization LOCALE = Localization.fromLocalizationCode("ja-JP");
