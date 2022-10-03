@@ -1,27 +1,5 @@
 package org.schabi.newpipe.extractor;
 
-/*
- * Created by Adam Howard on 08/11/15.
- *
- * Copyright (c) Christian Schabesberger <chris.schabesberger@mailbox.org>
- *     and Adam Howard <achdisposable1@gmail.com> 2015
- *
- * MediaFormat.java is part of NewPipe.
- *
- * NewPipe is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
- *
- * NewPipe is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
- *
- * You should have received a copy of the GNU General Public License
- * along with NewPipe.  If not, see <http://www.gnu.org/licenses/>.
- */
-
 import java.util.Arrays;
 import java.util.function.Function;
 
